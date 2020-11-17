@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import { loadGames } from "../actions/gamesAction";
 import Game from "../components/Game";
 import GameDetail from "../components/GameDetail";
+import { fadeIn } from "../animations";
 
 function Home() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function Home() {
   );
 
   return (
-    <GameList>
+    <GameList variants={fadeIn} initial="hidden" animate="show">
       <AnimateSharedLayout type="crossfade">
         <AnimatePresence>
           {pathId && <GameDetail pathId={pathId} />}
@@ -37,26 +38,27 @@ function Home() {
             </Games>
           </div>
         ) : (
-          ""
+          <div>
+            <h2> Upcoming Games </h2>
+            <Games>
+              {upcoming.map((game) => (
+                <Game key={game.id} game={game} />
+              ))}
+            </Games>
+            <h2> Popular Games </h2>
+            <Games>
+              {popular.map((game) => (
+                <Game key={game.id} game={game} />
+              ))}
+            </Games>
+            <h2> New Games </h2>
+            <Games>
+              {newGames.map((game) => (
+                <Game key={game.id} game={game} />
+              ))}
+            </Games>
+          </div>
         )}
-        <h2> Upcoming Games </h2>
-        <Games>
-          {upcoming.map((game) => (
-            <Game key={game.id} game={game} />
-          ))}
-        </Games>
-        <h2> Popular Games </h2>
-        <Games>
-          {popular.map((game) => (
-            <Game key={game.id} game={game} />
-          ))}
-        </Games>
-        <h2> New Games </h2>
-        <Games>
-          {newGames.map((game) => (
-            <Game key={game.id} game={game} />
-          ))}
-        </Games>
       </AnimateSharedLayout>
     </GameList>
   );
@@ -64,6 +66,7 @@ function Home() {
 
 const GameList = styled(motion.div)`
   padding: 0rem 0.5rem;
+  margin: 5rem;
   h2 {
     padding: 5rem 0rem;
   }
