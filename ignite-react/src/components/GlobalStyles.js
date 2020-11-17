@@ -45,6 +45,10 @@ a {
 img {
     display: block
 }
+input {
+    font-weight: bold;
+    font-family: "Itim", sans-serif;
+}
 `;
 
 export default GlobalStyle;
