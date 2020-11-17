@@ -20,7 +20,18 @@ function Home() {
           <Game key={game.id} game={game} />
         ))}
       </Games>
-      {/* <Game /> */}
+      <h2> Popular Games </h2>
+      <Games>
+        {popular.map((game) => (
+          <Game key={game.id} game={game} />
+        ))}
+      </Games>
+      <h2> New Games </h2>
+      <Games>
+        {newGames.map((game) => (
+          <Game key={game.id} game={game} />
+        ))}
+      </Games>
     </GameList>
   );
 }
