@@ -13,6 +13,9 @@ html {
     &::-webkit-scrollbar-thumb{
         background-color:darkgray
     }
+    &::-webkit-scrollbar-track {
+    background: white;
+  }
 }
 body {
     font-family: 'Itim', sans-serif;
@@ -38,6 +41,9 @@ p {
 a {
     text-decoration: none;
     color: #333
+}
+img {
+    display: block
 }
 `;
 
